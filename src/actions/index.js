@@ -2,7 +2,7 @@ import { INCREMENT, DECREMENT } from '../constants/index.js';
 
 export const increment = () => {
     return {
-      type: INCREMENT
+      type: INCREMENT //type后跟字符串
     }
 };
 
