@@ -7,6 +7,7 @@ import logger from 'redux-logger';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools} from "redux-devtools-extension"
 // const logger = store => next => action => {
 //     console.log('dispatching', action);
 //     let result = next(action);
@@ -22,7 +23,7 @@ import thunk from 'redux-thunk';
 //     }
 // };
 
-const store = createStore(rootReducer, {}, applyMiddleware(logger,thunk));
+const store = createStore(rootReducer, {}, composeWithDevTools(applyMiddleware(logger,thunk)));
 
 ReactDOM.render(
     <Provider store = { store }>
