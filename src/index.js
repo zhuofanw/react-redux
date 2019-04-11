@@ -2,12 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+// const logger = store => next => action => {
+//     console.log('dispatching', action);
+//     let result = next(action);
+//     console.log('next state', store.getState());
+//     return result;
+// }
+//
+// const error = store => next => action => {
+//     try{
+//         next(action)
+//     } catch (e) {
+//         console.log('error' + e)
+//     }
+// };
 
-
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, {}, applyMiddleware(logger,thunk));
 
 ReactDOM.render(
     <Provider store = { store }>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { increment, decrement } from './actions';
+import * as types from './actions';
+import User from './components/User';
+
 class App extends Component {
   render() {
     const { increment, decrement } = this.props;
@@ -14,6 +16,7 @@ class App extends Component {
               <button onClick={ () => increment()} className="btn btn-primary mr-2">Increase</button>
               <button onClick={ () => decrement()} className="btn btn-danger mr-2">Decrease</button>
           </p>
+            <User />
         </div>
     );
   }
@@ -38,4 +41,4 @@ App.propTypes = {
     decrement: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps,{increment, decrement})(App);
+export default connect(mapStateToProps,types)(App);
